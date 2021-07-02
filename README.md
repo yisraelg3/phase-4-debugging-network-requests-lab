@@ -62,12 +62,26 @@ developing your own process.
 
 - Add a new toy when the toy form is submitted
 
-  - How I debugged:
+  - How I debugged: 
+  1) First I checked the routes/models/controllers and everything seems ok. 
+  2) Next step is to try it in the frontend and see what happens. 
+  3) I get a 500 error (internal server), so first i need to check what is being passed to the server from the frontend. It seems to be sending to the correct path and the correct column names. I realized that I first should have checked what kind of 500 error it was. It was an "uninitialized constant error" so I first need to check my variable names in my controller. 
+  4) I changed Toys to Toy and now it works!
 
 - Update the number of likes for a toy
 
   - How I debugged:
+  1) I decided this time first to try it in the frontend end. I get a unexpected end of json input. This means I'm not rendering any json from the backend. let's fix that.
+
+  2) I added a render into the update method and now it works!
 
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+  1) I decided n the same approach as from the update, as that was quicker. i tried donating in the frontend and I got a 404 error that means I'm not finding the correct toy. Let's go see why.
+
+  2) It's not obvious what is is broken so I'm putting a byebug in the destroy action to see what's going on.
+
+  3) I didn't even hit the byebug, that tells me that I don't have a route for my destroy action let's fix that. 
+  
+  4) I added in a destroy action route, and now it works!
